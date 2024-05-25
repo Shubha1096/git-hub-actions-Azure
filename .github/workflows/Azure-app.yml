@@ -24,9 +24,7 @@ jobs:
         registry: ${{ secrets.AZURE_REGISTRY_NAME }}.azurecr.io
 
     - name: Build and push Docker image
-      uses: docker/build-push-action@v4
+      uses: docker/build-push-action@v5
       with:
-        context: .
-        file: ./Dockerfile
         push: true
         tags: ${{ secrets.AZURE_REGISTRY_NAME }}.azurecr.io/my-image:latest
