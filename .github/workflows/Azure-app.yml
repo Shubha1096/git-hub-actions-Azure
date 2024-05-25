@@ -16,7 +16,7 @@ jobs:
       with:
         username: ${{ secrets.AZURE_REGISTRY_USERNAME }}
         password: ${{ secrets.AZURE_REGISTRY_PASSWORD }}
-        login-server: ${{ secrets.AZURE_REGISTRY_NAME }}.azurecr.io
+        registry: ${{ secrets.AZURE_REGISTRY_NAME }}.azurecr.io
     - run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin    
     - uses: azure/build-push-action@v5
       with:
