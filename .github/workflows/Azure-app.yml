@@ -18,8 +18,9 @@ jobs:
         password: ${{ secrets.AZURE_REGISTRY_PASSWORD }}
         registry: ${{ secrets.AZURE_REGISTRY_NAME }}.azurecr.io
     - run: docker login -u "${{ secrets.DOCKER_USERNAME }}" -p "${{ secrets.DOCKER_PASSWORD }}" "${{ secrets.AZURE_REGISTRY_NAME }}.azurecr.io"
-    - uses: docker/build-push-action@v5
-      with:
-        push: true
-        tags: ${{ secrets.AZURE_REGISTRY_NAME }}.azurecr.io/my-image:latest
+    - run: |
+        docker login -u ${{ secrets.AZURE_ROLE_USER }} -p ${{ secrets.AZURE_ROLE_PASSWORD }} ${{ secrets.AZURE_REGISTRY_NAME }}.azurecr.io
+        docker build . -t ${{ secrets.AZURE_REGISTRY_NAME }}.azurecr.io/sampleapp:V1
+        docker push ${{ secrets.AZURE_REGISTRY_NAME }}.azurecr.io/sampleapp:V1
+
 
