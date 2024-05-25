@@ -11,8 +11,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - uses: docker/setup-buildx-action@v3
-    - uses: docker/docker-login@v2
+    # - uses: docker/setup-buildx-action@v3
+    - uses: azure/docker-login@v2
       with:
         username: ${{ secrets.AZURE_ROLE_USER }}
         password: ${{ secrets.AZURE_ROLE_PASSWORD }}
