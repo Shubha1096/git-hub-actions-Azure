@@ -20,4 +20,6 @@ jobs:
       with:
         push: true
         tags: ${{ secrets.AZURE_REGISTRY_NAME }}.azurecr.io/my-image:latest
+        secrets: |
+          GIT_AUTH_TOKEN=${{ secrets.GIT_AUTH_TOKEN }}
 
